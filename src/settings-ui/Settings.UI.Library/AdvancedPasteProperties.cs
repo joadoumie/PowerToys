@@ -22,6 +22,7 @@ namespace Microsoft.PowerToys.Settings.UI.Library
             PasteAsJsonShortcut = new();
             ShowCustomPreview = true;
             SendPasteKeyCombination = true;
+            Shortcuts = new AdvancedPasteShortcuts();
         }
 
         [JsonConverter(typeof(BoolPropertyJsonConverter))]
@@ -42,6 +43,10 @@ namespace Microsoft.PowerToys.Settings.UI.Library
 
         [JsonPropertyName("paste-as-json-hotkey")]
         public HotkeySettings PasteAsJsonShortcut { get; set; }
+
+        [JsonPropertyName("shortcuts")]
+        [CmdConfigureIgnoreAttribute]
+        public AdvancedPasteShortcuts Shortcuts { get; set; }
 
         public override string ToString()
             => JsonSerializer.Serialize(this);
